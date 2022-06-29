@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { cartItemsSelector } from '../../../store/cart/cartSelectors';
-import cartSlice from '../../../store/cart/cartSlice';
+import { cartCountSelector, cartItemsSelector, cartPriceSelector } from '../../../shared/store/cart/cartSelectors';
+import cartSlice from '../../../shared/store/cart/cartSlice';
 import CartItem from './CartItem/CartItem';
 import { default as S } from './Cart.styled';
 
@@ -12,6 +12,9 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ close }) => {
     const cart = useSelector(cartItemsSelector);
+    const price = useSelector(cartPriceSelector);
+    const count = useSelector(cartCountSelector);
+    const countIsValid = count > 0;
     const dispatch = useDispatch();
     const ref = useRef<HTMLElement>(null);
 
@@ -37,14 +40,31 @@ const Sidebar: React.FC<SidebarProps> = ({ close }) => {
 
     }
 
+    const Content = () => {
+        if (!countIsValid) {
+            return <S.Warning>No items</S.Warning>
+        }
+        return (
+            <S.CostGroup>
+                <S.CostLabel>
+                    You Will Pay:
+                </S.CostLabel>
+                <S.Cost>
+                    {price}
+                </S.Cost>
+            </S.CostGroup>
+        );
+    }
+
     return (
         <S.Sidebar ref={ref}>
             <S.X onClick={close}>X</S.X>
             <S.Title>Cart</S.Title>
             <S.ButtonsHolder>
-                <S.Button onClick={handleCheckout}>Checkout</S.Button>
-                <S.Button onClick={handleClearCart}>Clear Cart</S.Button>
+                <S.Button onClick={handleCheckout} disabled={!countIsValid}>Checkout</S.Button>
+                <S.Button onClick={handleClearCart} disabled={!countIsValid}>Clear Cart</S.Button>
             </S.ButtonsHolder>
+            <Content />
             <S.CartList >
                 {
                     cart.map((item, index) => {
