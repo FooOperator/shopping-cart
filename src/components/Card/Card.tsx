@@ -24,11 +24,14 @@ const Card: React.FC<CardProps> = (props) => {
     if (props.variant === 'row') {
         return (
             <S.Card variant={'row'}>
-                <S.Thumbnail
-                    src={props.thumbnail}
+                <S.ThumbnailHolder
                     height={props.height ?? 300}
-                    onClick={handleGoTo}
-                />
+                >
+                    <S.Thumbnail
+                        src={props.thumbnail}
+                        onClick={handleGoTo}
+                    />
+                </S.ThumbnailHolder>
                 <S.InfoColumn>
                     <S.Title onClick={handleGoTo}>{props.title}</S.Title>
                     {
@@ -48,11 +51,14 @@ const Card: React.FC<CardProps> = (props) => {
 
     return (
         <S.Card variant={'column'}>
-            <S.Thumbnail
-                src={props.thumbnail}
+            <S.ThumbnailHolder
                 height={props.height ?? 300}
-                onClick={handleGoTo}
-            />
+            >
+                <S.Thumbnail
+                    src={props.thumbnail}
+                    onClick={handleGoTo}
+                />
+            </S.ThumbnailHolder>
             <S.Title onClick={handleGoTo}>{props.title}</S.Title>
             {
                 props.legend &&

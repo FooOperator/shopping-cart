@@ -1,14 +1,21 @@
 import styled, { css } from "styled-components"
 import { Link as ReactRouterLink } from "react-router-dom";
-import { NeutralLink } from "../../style/mixins";
+import { NeutralLink } from "../../shared/style/snippets";
 
-const Thumbnail = styled.img<{ height: number }>`
-    height: ${(props) => props.height}px;
+const Thumbnail = styled.img`
+    height: 100%;
+    width: 100%;
     object-fit: cover;
 `;
 
-const Title = styled.span`
-    font-size: 1.5rem;
+const ThumbnailHolder = styled.div<{ height: number }>`
+    height: ${(props) => props.height}px;
+`;
+
+const Title = styled.h3`
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin: 0;
 `;
 
 const Legend = styled.legend`
@@ -27,13 +34,22 @@ const InfoColumn = styled.div`
 `;
 
 const RowCard = css`
-    border-width: .01rem;
-
+    border-width: .2rem;
+    border-color: transparent;
+    ${ThumbnailHolder} {
+        width: 20%;
+        max-width: 300px;
+        min-width: 95px;
+    }
+    :hover {
+        border-color: ${({ theme }) => theme.border};
+    }
 `;
 
 const ColumnCard = css`
     flex-direction: column;
     border-width: .25rem;
+    
 `;
 
 const Card = styled.div<{ variant: string }>`
@@ -60,8 +76,6 @@ const Card = styled.div<{ variant: string }>`
             background-position: left;
             color: ${({ theme }) => theme.darkText};
         }
-
-        
     }
 
 `;
@@ -76,5 +90,5 @@ const Link = styled(ReactRouterLink) <{ color?: string }>`
 `;
 
 export default {
-    Card, Title, Thumbnail, Legend, Link, Children, InfoColumn
+    Card, Title, Thumbnail, Legend, Link, Children, InfoColumn, ThumbnailHolder
 }
