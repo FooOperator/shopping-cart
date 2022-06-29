@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import { catalogItemsSelector } from '../../store/catalog/catalogSelectors';
-import { RootState } from '../../store/store';
-import { formatCurrency } from '../../utils/manipulations';
+import { catalogItemsSelector } from '../../shared/store/catalog/catalogSelectors';
+import { RootState } from '../../shared/store/store';
+import { formatCurrency } from '../../shared/utils/manipulations';
 import { default as S } from './CardGrid.styled';
 import StoreCard from '../StoreCard/StoreCard';
 
