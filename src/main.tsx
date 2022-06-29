@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { DefaultTheme, ThemeProvider } from 'styled-components'
 import App from './App'
 import GlobalStyle from './GlobalStyle'
-import configuredStore from './store/store'
+import configuredStore from './shared/store/store'
 
 const theme: DefaultTheme = {
   background: '#090B0C',
