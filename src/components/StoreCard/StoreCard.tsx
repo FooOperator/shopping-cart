@@ -1,9 +1,9 @@
 import React, { SyntheticEvent } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { cartSingleItemSelector } from '../../store/cart/cartSelectors';
-import cartSlice from '../../store/cart/cartSlice';
-import { RootState } from '../../store/store';
-import { Product } from '../../types/store';
+import { cartSingleItemSelector } from '../../shared/store/cart/cartSelectors';
+import cartSlice from '../../shared/store/cart/cartSlice';
+import { RootState } from '../../shared/store/store';
+import { Product } from '../../shared/types/store';
 import Card, { CardProps } from '../Card/Card'
 import { default as S } from './StoreCard.styled';
 
@@ -29,7 +29,11 @@ const StoreCard: React.FC<StoreCardProps> = (props) => {
 
     const handleDecrement = () => {
         if (count) {
-            dispatch(cartSlice.actions.modifyCount([props.product, count - 1]));
+            if (count - 1 === 0) {
+                dispatch(cartSlice.actions.remove(props.product.id));
+            } else {
+                dispatch(cartSlice.actions.modifyCount([props.product, count - 1]));
+            }
         }
     }
 

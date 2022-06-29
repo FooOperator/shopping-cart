@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useTheme } from 'styled-components';
-import { cartCountSelector } from '../../../store/cart/cartSelectors';
+import { cartCountSelector } from '../../../shared/store/cart/cartSelectors';
 import CustomLink from '../../CustomLink/CustomLink';
 import { default as S } from './Navbar.styled';
 
