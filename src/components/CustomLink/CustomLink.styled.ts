@@ -1,31 +1,34 @@
-import styled from "styled-components";
-import { NeutralLink } from "../../style/mixins";
+import styled, { css } from "styled-components";
+import { NeutralLink } from "../../shared/style/snippets";
 
-const LinkHolder = styled.div<{ color: string }>`
+const LinkHolder = css<{ color: string }>`
     color: ${props => props.color ?? props.theme.primary};
     a {
         ${NeutralLink}
     }
-
 `;
 
-const DecoratedLink = styled(LinkHolder)`
+const DecoratedLink = styled.span`
+    color: ${props => props.color ?? props.theme.primary};
     font-size: 1rem;
 `;
 
-const NavLink = styled(LinkHolder)`
+const NavLink = styled.span`
+    ${LinkHolder}
     font-size: 1.2rem;
     outline: 0 solid ${({ theme }) => theme.border};
     outline-offset: .3rem;
     transition: outline .1s linear;
-
+    text-transform: uppercase;
     :hover {
-        outline-width: .6rem;
+        outline-width: .3rem;
     }
 `;
 
-const Brand = styled(LinkHolder)`
+const Brand = styled.h1`
+    ${LinkHolder}
     font-size: 2rem;
+    margin: .3rem;
 `;
 
 export default {
