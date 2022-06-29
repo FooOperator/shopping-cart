@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
+
     html,
     body {
         margin: 0;
@@ -11,6 +12,19 @@ export default createGlobalStyle`
         scroll-behavior: smooth;
     }
 
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Rubik', sans-serif
+    }
+
+    :not(h1, h2, h3, h4, h5, h6) {
+        font-family: 'Montserrat', sans-serif;
+    }
+
     #root {
         height: 100%;
     }
@@ -19,9 +33,18 @@ export default createGlobalStyle`
         box-sizing: border-box
     }
 
+    
+    :disabled {
+        cursor: not-allowed;
+    }
+
     button {
+        font-weight: 600;
+        border: .1rem  ${({ theme }) => theme.border} solid;
+        color: ${({ theme }) => theme.primary};
+        background-color: ${({ theme }) => theme.background};
         cursor: pointer;
-        :hover {
+        :enabled:hover {
             color: ${props => props.theme.lightText};
             border-color: ${props => props.theme.secondary};
             background-color: ${props => props.theme.foreground};
@@ -30,15 +53,9 @@ export default createGlobalStyle`
 
     a {
         color: ${props => props.theme.secondary};
-        :hover {
+        :enabled:hover {
             color: ${props => props.theme.lightText};
         }
-    }
-
-    button {
-        border: .1rem  ${({ theme }) => theme.border} solid;
-        color: ${({ theme }) => theme.primary};
-        background-color: ${({ theme }) => theme.background};
     }
 
     ul {
