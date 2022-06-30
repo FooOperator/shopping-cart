@@ -3,12 +3,16 @@ import Layout from './components/Layout/Layout/Layout';
 import About from './pages/About';
 import Home from './pages/Home';
 import Store from './pages/Store';
+import NotFound from './components/NotFound/NotFound';
 import { Helmet } from 'react-helmet';
 import { capitalize } from './shared/utils/manipulations';
+import useAuth0 from '@auth0/auth0-react/src/use-auth0';
+
 const App = () => {
   const location = useLocation();
-  console.log('pathname: ', location.pathname);
+  const { user, isAuthenticated, isLoading } = useAuth0();
   const currentTitle = ` - ${capitalize(location.pathname.slice(1))}`;
+
   return (
     <div className="App">
       <Helmet>
@@ -20,13 +24,23 @@ const App = () => {
       </Helmet>
       <Routes>
         <Route path='/' element={<Layout />} >
-          <Route index element={<Home />} />
+          <Route index
+            element={
+              isAuthenticated ?
+                <Home />
+                :
+                <h1>Lmao</h1>
+            }
+          />
+          {/* <Route path='login' element={<Login />} />
+          <Route path='register' element={<Register />} /> */}
+          <Route path='*' element={<NotFound />} />
           <Route path='store' element={<Store />} />
           <Route path='about' element={<About />} />
         </Route>
       </Routes>
     </div>
-  )
+  );
 }
 
 export default App;

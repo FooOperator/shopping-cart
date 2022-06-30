@@ -4,13 +4,13 @@ import { Blurred } from "../../../shared/style/snippets";
 const Main = styled.main`
     display: flex;
     flex-direction: column;
-    height: 100%;
+    flex-basis: 80%;
 `;
 
 const Layout = styled.div<{ sidebarActive: boolean }>`
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: 100vh;
     ${props => props.sidebarActive ? Blurred : ''}
 `;
 

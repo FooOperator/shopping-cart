@@ -1,4 +1,14 @@
 import styled from "styled-components";
+import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline'
+
+const X = styled(CloseOutline)`
+    align-self: flex-end;
+    width: 4rem;
+    cursor: pointer;
+    :hover {
+        color: ${({ theme }) => theme.secondary};
+    }
+`;
 
 const Title = styled.h2`
     margin: .5rem;
@@ -18,6 +28,7 @@ const CartList = styled.ul`
 const Sidebar = styled.div`
     position: fixed;
     display: flex;
+    z-index: 2;
     backdrop-filter: none;
     flex-direction: column;
     align-items: center;
@@ -57,10 +68,6 @@ const ButtonsHolder = styled.div`
     gap: .1rem;
 `;
 
-const X = styled.button`
-    padding: .2rem .7rem;
-    align-self: flex-end;
-`;
 
 
 

@@ -66,7 +66,7 @@ const Card = styled.div<{ variant: string }>`
     }
     ${Title}, ${Legend} {
         background: linear-gradient(to left, ${({ theme }) => theme.foreground} 50%, ${({ theme }) => theme.primary} 50%) right;
-        background-size: 200%;
+        background-size: 300%;
         transition: .5s ease-out;
     }
 

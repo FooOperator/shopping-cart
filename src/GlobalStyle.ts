@@ -53,7 +53,7 @@ export default createGlobalStyle`
 
     a {
         color: ${props => props.theme.secondary};
-        :enabled:hover {
+        :hover {
             color: ${props => props.theme.lightText};
         }
     }

@@ -1,3 +1,4 @@
+import { Add, Remove } from '@styled-icons/ionicons-outline';
 import React, { SyntheticEvent } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { cartSingleItemSelector } from '../../shared/store/cart/cartSelectors';
@@ -41,9 +42,9 @@ const StoreCard: React.FC<StoreCardProps> = (props) => {
         <S.ButtonsHolder>
             {count !== undefined ?
                 <>
-                    <S.DecreaseCount onClick={handleDecrement}>-</S.DecreaseCount>
+                    <S.DecreaseCount onClick={handleDecrement}><Remove size={30} /></S.DecreaseCount>
                     <S.Count>{count}</S.Count>
-                    <S.IncreaseCount onClick={handleIncrement}>+</S.IncreaseCount>
+                    <S.IncreaseCount onClick={handleIncrement}><Add size={30} /></S.IncreaseCount>
                 </>
                 :
                 <S.AddToCart onClick={handleAddToCart} >

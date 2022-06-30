@@ -5,13 +5,7 @@ import Sidebar from '../Cart/Cart'
 import { default as S } from './Layout.styled';
 
 const Layout = () => {
-
     const [sidebarActive, setSidebarActive] = useState<boolean>(false);
-
-    useEffect(() => {
-        console.log('sidebar active: ', sidebarActive);
-    }, [sidebarActive]);
-
 
     const handleSidebar = (value: boolean) => {
         setSidebarActive(value);
@@ -21,7 +15,6 @@ const Layout = () => {
         <>
             <S.Layout sidebarActive={sidebarActive}>
                 <Navbar open={() => handleSidebar(true)} />
-
                 <S.Main>
                     <Outlet />
                 </S.Main>
@@ -34,4 +27,4 @@ const Layout = () => {
     )
 }
 
-export default Layout
+export default Layout;

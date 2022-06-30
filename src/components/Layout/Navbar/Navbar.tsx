@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { useTheme } from 'styled-components';
 import { cartCountSelector } from '../../../shared/store/cart/cartSelectors';
 import CustomLink from '../../CustomLink/CustomLink';
+import UserWidget from '../UserWidget/UserWidget';
 import { default as S } from './Navbar.styled';
 
 interface NavbarProps {
@@ -12,7 +11,6 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ open }) => {
     const cartCount = useSelector(cartCountSelector);
-    const theme = useTheme();
     const [atTheTop, setAtTheTop] = useState<boolean>(true);
 
     useEffect(() => {
@@ -27,10 +25,6 @@ const Navbar: React.FC<NavbarProps> = ({ open }) => {
         }
     }, []);
 
-    useEffect(() => {
-        console.log('at the top: ', atTheTop);
-    }, [atTheTop]);
-
     return (
         <S.Nav atTheTop={atTheTop}>
             <CustomLink to='/' variant='brand'>
@@ -44,14 +38,11 @@ const Navbar: React.FC<NavbarProps> = ({ open }) => {
                     About
                 </CustomLink>
             </S.List>
-            <S.Cart onClick={open}>
-                <S.Span>
-                    Cart
-                </S.Span>
-                <S.Span>
-                    {cartCount > 0 && `${cartCount}`}
-                </S.Span>
-            </S.Cart>
+            <S.CartButton onClick={open} >
+                <S.CartIcon size={35} />
+                {cartCount > 0 && <S.Badge over99={cartCount > 99}>{cartCount}</S.Badge>}
+            </S.CartButton>
+            <UserWidget />
         </S.Nav>
     )
 }

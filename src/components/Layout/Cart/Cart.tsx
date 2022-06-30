@@ -4,8 +4,6 @@ import { cartCountSelector, cartItemsSelector, cartPriceSelector } from '../../.
 import cartSlice from '../../../shared/store/cart/cartSlice';
 import CartItem from './CartItem/CartItem';
 import { default as S } from './Cart.styled';
-
-
 interface SidebarProps {
     close: () => void;
 }
@@ -58,7 +56,7 @@ const Sidebar: React.FC<SidebarProps> = ({ close }) => {
 
     return (
         <S.Sidebar ref={ref}>
-            <S.X onClick={close}>X</S.X>
+            <S.X onClick={close} />
             <S.Title>Cart</S.Title>
             <S.ButtonsHolder>
                 <S.Button onClick={handleCheckout} disabled={!countIsValid}>Checkout</S.Button>
