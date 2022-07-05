@@ -1,12 +1,12 @@
 import { useSelector } from 'react-redux';
-import { catalogItemsSelector } from '../../shared/store/catalog/catalogSelectors';
-import { RootState } from '../../shared/store/store';
-import { formatCurrency } from '../../shared/utils/manipulations';
-import { default as S } from './CardGrid.styled';
-import StoreCard from '../StoreCard/StoreCard';
+import { catalogItemsSelector } from '../../../shared/store/catalog/catalogSelectors';
+import { RootState } from '../../../shared/store/store';
+import { formatCurrency } from '../../../shared/utils/manipulations';
+import { default as S } from './Catalog.styled';
+import CatalogCard from '../CatalogCard/CatalogCard';
 
 
-const CardGrid = () => {
+const Catalog = () => {
     const catalogItems = useSelector((state: RootState) => {
         const results = catalogItemsSelector(state);
         return results;
@@ -20,7 +20,7 @@ const CardGrid = () => {
                     const [product, count] = item;
                     const { price, title, image } = product;
                     return (
-                        <StoreCard
+                        <CatalogCard
                             key={index}
                             title={title}
                             thumbnail={image}
@@ -36,4 +36,4 @@ const CardGrid = () => {
     )
 }
 
-export default CardGrid;
+export default Catalog;

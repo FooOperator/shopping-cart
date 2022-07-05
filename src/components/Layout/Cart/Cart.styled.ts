@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { CloseOutline } from '@styled-icons/evaicons-outline/CloseOutline'
 
-const X = styled(CloseOutline)`
+const CloseButton = styled(CloseOutline)`
     align-self: flex-end;
     width: 4rem;
     cursor: pointer;
@@ -68,16 +68,13 @@ const ButtonsHolder = styled.div`
     gap: .1rem;
 `;
 
-
-
-
 export default {
     Sidebar,
     Title,
     ButtonsHolder,
     Button,
     CartList,
-    X,
+    CloseButton,
     CostGroup,
     CostLabel,
     Cost,

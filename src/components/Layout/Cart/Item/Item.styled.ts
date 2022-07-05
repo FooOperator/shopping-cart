@@ -5,5 +5,5 @@ const CartItem = styled.li`
 
 
 export default {
-    CartItem
+    Container: CartItem
 }

@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components"
+import { ButtonWithIcon } from "../../stateless";
 
 
 const Icon = styled.img`
@@ -9,10 +10,6 @@ const IconHolder = styled.div`
 
 `;
 
-const Button = styled.button`
-    padding: .4rem 1rem;
-`;
-
 const Container = styled.div`
     display: flex;
     justify-content: space-between;
@@ -20,9 +17,12 @@ const Container = styled.div`
     padding: .4rem 1rem;
 `;
 
+const ProfileButton = styled(ButtonWithIcon)`
+    padding: 1rem;
+`;
+
 export default {
-    Icon,
     IconHolder,
-    Button,
-    Container
+    Container,
+    ProfileButton
 }

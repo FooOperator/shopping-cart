@@ -1,20 +1,20 @@
 import { Add, Remove } from '@styled-icons/ionicons-outline';
-import React, { SyntheticEvent } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { cartSingleItemSelector } from '../../shared/store/cart/cartSelectors';
-import cartSlice from '../../shared/store/cart/cartSlice';
-import { RootState } from '../../shared/store/store';
-import { Product } from '../../shared/types/store';
-import Card, { CardProps } from '../Card/Card'
-import { default as S } from './StoreCard.styled';
+import { cartSingleItemSelector } from '../../../shared/store/cart/cartSelectors';
+import cartSlice from '../../../shared/store/cart/cartSlice';
+import { RootState } from '../../../shared/store/store';
+import { Product } from '../../../shared/types/store';
+import { CardProps, Card } from '../../../components/Card';
+import { default as S } from './CatalogCard.styled';
 
 
-interface StoreCardProps extends Omit<CardProps, 'children'> {
+interface CatalogCardProps extends Omit<CardProps, 'children'> {
     product: Product;
     stock: number;
 }
 
-const StoreCard: React.FC<StoreCardProps> = (props) => {
+const CatalogCard: React.FC<CatalogCardProps> = (props) => {
     const dispatch = useDispatch();
     const count = useSelector((state: RootState) => cartSingleItemSelector(state, props.product.id));
 
@@ -61,4 +61,4 @@ const StoreCard: React.FC<StoreCardProps> = (props) => {
     )
 }
 
-export default StoreCard;
+export default CatalogCard;

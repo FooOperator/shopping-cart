@@ -1,12 +1,13 @@
+import { Article } from '../Article';
 import { default as S } from './NotFound.styled';
 
 const NotFound = () => {
     return (
-        <S.Container>
-            <S.Notice>
+        <Article textAlign='middle'>
+            <p>
                 Sorry, but this page does not exist.
-            </S.Notice>
-        </S.Container>
+            </p>
+        </Article>
     );
 }
 

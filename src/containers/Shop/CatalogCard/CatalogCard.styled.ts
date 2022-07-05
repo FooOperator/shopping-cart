@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { ButtonWithIcon } from "../styled-components";
+import { ButtonWithIcon } from "../../../components/stateless";
 
 const Button = styled(ButtonWithIcon)`
     padding: .4rem .4rem;

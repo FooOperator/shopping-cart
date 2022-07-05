@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import Navbar from '../Navbar/Navbar'
-import Sidebar from '../Cart/Cart'
+import Cart from '../Cart/Cart'
 import { default as S } from './Layout.styled';
 
 const Layout = () => {
@@ -21,7 +21,7 @@ const Layout = () => {
             </S.Layout>
             {
                 sidebarActive &&
-                <Sidebar close={() => handleSidebar(false)} />
+                <Cart close={() => handleSidebar(false)} />
             }
         </>
     )
